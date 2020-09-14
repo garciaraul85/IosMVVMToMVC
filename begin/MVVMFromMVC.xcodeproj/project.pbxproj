@@ -20,6 +20,7 @@
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		F82BDA43250FD092004BDDFC /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82BDA42250FD092004BDDFC /* Box.swift */; };
+		F82BDA45250FD199004BDDFC /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82BDA44250FD199004BDDFC /* WeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F82BDA42250FD092004BDDFC /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		F82BDA44250FD199004BDDFC /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 		6351BBCF23AE8A7000B7C4DF /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				F82BDA44250FD199004BDDFC /* WeatherViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				3864C3EA237CB7FF000C9CA0 /* LocationGeocoder.swift in Sources */,
 				3864C3EC237CB938000C9CA0 /* Location.swift in Sources */,
 				D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */,
+				F82BDA45250FD199004BDDFC /* WeatherViewModel.swift in Sources */,
 				38159E9824352DD000819474 /* WeatherbitData.swift in Sources */,
 				38159E9A24352E8300819474 /* WeatherbitService.swift in Sources */,
 			);

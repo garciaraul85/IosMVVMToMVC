@@ -10,10 +10,31 @@ public class WeatherViewModel{
   // The code above will make the app display “Loading…” on launch till a location has been fetched.
   let locationName = Box("Loading ...")
   // 2: defaultAddress sets a default address.
-  private static let defaultAddress = "McGaheysville, VA"
+  private static let defaultAddress = "Anchorage, AK"
   
   // 1: geocoder takes a String input such as Washington DC and converts it to a latitude and longitude that it sends to the weather service.
   private let geocoder = LocationGeocoder()
+  
+  // 3: DateFormatter formats the date display.
+  private let dateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, MMM d"
+    return dateFormatter
+  }()
+  
+  // It’s initially a blank string and updates when the weather data arrives from the Weatherbit API.
+  let date = Box(" ")
+  
+  // 4: Finally, NumberFormatter helps present the temperature as an integer value
+  private let tempFormatter: NumberFormatter = {
+    let tempFormatter = NumberFormatter()
+    tempFormatter.numberStyle = .none
+    return tempFormatter
+  }()
+  
+  let icon: Box<UIImage?> = Box(nil)
+  let summary = Box(" ")
+  let forecastSummary = Box(" ")
   
   init() {
     changeLocation(to: Self.defaultAddress)
@@ -29,10 +50,15 @@ public class WeatherViewModel{
         self.fetchWeatherForLocation(location)
         return
       }
+      // This code makes sure no weather data is shown if no location is returned from the geocode call.
+      self.locationName.value = "Not found"
+      self.date.value = ""
+      self.icon.value = nil
+      self.summary.value = ""
+      self.forecastSummary.value = ""
     }
   }
   
-  // The callback does nothing for now, but you’ll complete this method in the next section.
   func fetchWeatherForLocation(_ location: Location) {
     //1: Calls the weather service and passes it the location’s latitude and longitude.
     WeatherbitService.weatherDataForLocation(
@@ -45,6 +71,16 @@ public class WeatherViewModel{
       else {
         return
       }
+      print(location.latitude)
+      // updates date whenever the weather data arrives.
+      // This code formats the different weather items for the view to present them.
+      self.date.value = self.dateFormatter.string(from: weatherData.date)
+      self.icon.value = UIImage(named: weatherData.iconName)
+      let temp = self.tempFormatter
+        .string(from: weatherData.currentTemp as NSNumber) ?? ""
+      print("\(weatherData.description) - \(temp)℉")
+      self.summary.value = "\(weatherData.description) - \(temp)℉"
+      self.forecastSummary.value = "\nSummary: \(weatherData.description)"
     }
   }
   
